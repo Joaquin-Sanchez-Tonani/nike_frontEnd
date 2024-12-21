@@ -1,0 +1,49 @@
+.body_class{
+    padding: 50px;
+    display: flex;
+    margin-top: 8dvh;
+    justify-content: end;
+    position: relative;
+}
+footer{
+    background-color: rgb(24, 24, 24);
+    width: 100%;
+    color: rgb(155, 155, 155);
+    display: flex;
+    justify-content: space-evenly;
+    padding: 50px 0;
+}
+footer div{
+    display: flex;
+    flex-direction: column;
+}
+footer div h4{
+    color: aliceblue;
+}
+footer div ul li{
+    list-style: none;
+}
+footer div ul,footer div{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: last baseline;
+    justify-content: center;
+}
+.banner{
+    width: 100%;
+}
+
+@media (max-width:1250px) {
+    .body_class{
+        padding: 30px;
+        justify-content: center;
+    }
+}
+
+@media (max-width:700px) {
+    .body_class{
+        padding: 20px;
+        justify-content: center;
+    }
+}

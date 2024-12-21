@@ -1,0 +1,35 @@
+:root{
+  --primary-color: rgb(77, 77, 77);
+  --secondary-color: #F4530A;
+}
+
+html{
+  font-family:Arial, Helvetica, sans-serif;
+  user-select: none;
+}
+body{
+  margin: 0;
+}
+h1,h2,h3,h4,h5,h6,p,ul,li{
+  margin: 0;
+  padding: 0;
+}
+
+.flaticon{
+  display: flex;
+}
+
+/* Estilo general para los enlaces */
+a {
+  text-decoration: none; /* Quita el subrayado */
+  color: inherit;        /* Mantiene el color del texto */
+}
+
+/* Opcional: puedes agregar estilos adicionales para hover o estados activos */
+a:hover {
+  text-decoration: underline; /* Subrayado al pasar el ratón, si lo prefieres */
+}
+
+a:visited {
+  color: inherit; /* Evita que los enlaces visitados cambien de color */
+}
