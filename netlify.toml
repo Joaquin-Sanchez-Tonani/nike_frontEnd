@@ -1,13 +1,8 @@
 [build]
-  # Directorio de publicación generado por Vite (por defecto "dist")
-  publish = "dist"
-  
-  # Comando para compilar la aplicación con Vite
+  publish = "build"
   command = "npm run build"
-
 [[redirects]]
-  # Redirigir todas las rutas a "index.html" para que el enrutador de React maneje las rutas
   from = "/*"
-  to = "/index.html"
+  to = "https://python-backend-9d90.onrender.com/:splat"
   status = 200
   force = true
