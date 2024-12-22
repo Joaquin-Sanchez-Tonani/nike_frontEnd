@@ -5,7 +5,12 @@ function Filter({setCategory,category}){
     const [valor,setValor] = useState([1,2,3])
     useEffect(()=>{
         try{
-            fetch("http://127.0.0.1:5000/categories", {method: 'POST'})
+            fetch('https://python-backend-9d90.onrender.com/categories', {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({}) // Si necesitas un cuerpo en el POST
+            })
+            
             .then(response => response.json())
             .then(data => {
                 setValor(data)}
