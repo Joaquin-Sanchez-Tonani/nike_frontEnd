@@ -19,8 +19,9 @@ function App() {
   useEffect(() => {
           try {
             fetch('https://python-backend-9d90.onrender.com/products', {
-              method: 'GET'
-      
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({}) // Si necesitas un cuerpo en el POST
           })
           
                   .then(response => response.json())

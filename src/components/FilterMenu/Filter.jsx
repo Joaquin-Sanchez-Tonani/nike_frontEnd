@@ -6,7 +6,9 @@ function Filter({setCategory,category}){
     useEffect(()=>{
         try{
             fetch('https://python-backend-9d90.onrender.com/categories', {
-                method: 'GET'
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({}) // Si necesitas un cuerpo en el POST
             })
             
             .then(response => response.json())
