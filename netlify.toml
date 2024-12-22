@@ -2,3 +2,8 @@
   base = ""
   publish = "build"
   command = "npm run build"
+[[redirects]]
+  from = "/*"
+  to = "https://python-backend-9d90.onrender.com/:splat"
+  status = 200
+  force = true
