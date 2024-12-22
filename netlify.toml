@@ -1,18 +1,8 @@
 [build]
-  base = ""
   publish = "dist"
   command = "npm run build"
-
-# Redirige todo a 'index.html' para manejar rutas en el frontend con React Router
 [[redirects]]
   from = "/*"
-  to = "/index.html"
-  status = 200
-  force = true
-
-# Redirige las solicitudes de API al backend
-[[redirects]]
-  from = "/api/*"
   to = "https://python-backend-9d90.onrender.com/:splat"
   status = 200
   force = true
