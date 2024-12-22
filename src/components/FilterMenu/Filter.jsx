@@ -10,7 +10,6 @@ function Filter({setCategory,category}){
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({}) // Si necesitas un cuerpo en el POST
             })
-            
             .then(response => response.json())
             .then(data => {
                 setValor(data)}
