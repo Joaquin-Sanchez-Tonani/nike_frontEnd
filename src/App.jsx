@@ -8,6 +8,7 @@ import './App.css';
 
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
   const [category, setCategory] = useState(0);
   const [searchValue, setSearchValue] = useState('');
   const [products, setProducts] = useState([]);
@@ -17,21 +18,26 @@ function App() {
     return savedCart ? JSON.parse(savedCart) : [];
   });
   useEffect(() => {
-          try {
-            fetch('https://python-backend-9d90.onrender.com/products', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({}) // Si necesitas un cuerpo en el POST
-          })
-          
-                  .then(response => response.json())
-                  .then(data => {
-                      setProducts(data);
-                  });
-          } catch (e) {
-              console.log(e);
-          }
-      }, []);
+    const fetchProducts = async () => {
+        try {
+            setIsLoading(true);
+            const result = await fetch('https://python-backend-9d90.onrender.com/products', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({})
+            });
+            const data = await result.json();
+            setProducts(data);
+            setIsLoading(false);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            setIsLoading(false); 
+        }
+    };
+
+    fetchProducts();
+}, []);
+
   return (
     <Router>
       <Header cart={cart} setCart={setCart} setSearchValue={setSearchValue} />
@@ -39,7 +45,7 @@ function App() {
           <Route exact path="/" element={
             <div className='body_class'>
               <Filter setCategory={setCategory} category={category} />
-              <Products setProducts={setProducts} products={products} setCategory={setCategory} searchValue={searchValue} category={category} />
+              <Products isLoading={isLoading} setProducts={setProducts} products={products} setCategory={setCategory} searchValue={searchValue} category={category} />
             </div>
           }/>
           <Route path="/product/:id" element={<ProductDetails cart={cart} setCart={setCart} products={products}/>}/>

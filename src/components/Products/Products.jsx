@@ -2,44 +2,28 @@ import { useEffect, useState } from 'react';
 import './Products.css';
 import { Link } from 'react-router-dom';
 
-function Products({ products, setProducts, category, searchValue, setCategory }) {
+function Products({ isLoading , products, setProducts, category, searchValue, setCategory }) {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [itemsToShow, setItemsToShow] = useState(12);
-    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        setIsLoading(true);
-        setTimeout(() => {
-            setFilteredProducts(products.slice(0, itemsToShow));
-            setIsLoading(false);
-        }, 500);
+        setFilteredProducts(products.slice(0, itemsToShow));
     }, [products, itemsToShow]);
 
     useEffect(() => {
         setCategory(0);
-        setIsLoading(true);
         const filteredResults = products.filter((item) =>
             item[1].toLowerCase().includes(searchValue)
         );
-        setTimeout(() => {
-            setFilteredProducts(filteredResults.slice(0, itemsToShow));
-            setIsLoading(false);
-        }, 300);
+        setFilteredProducts(filteredResults.slice(0, itemsToShow));
     }, [searchValue]);
 
     useEffect(() => {
-        setIsLoading(true);
         if (category === 0) {
-            setTimeout(() => {
-                setFilteredProducts(products.slice(0, itemsToShow));
-                setIsLoading(false);
-            }, 300);
+            setFilteredProducts(products.slice(0, itemsToShow));
         } else {
             const filtered = products.filter((product) => product[4] === category);
-            setTimeout(() => {
-                setFilteredProducts(filtered.slice(0, itemsToShow));
-                setIsLoading(false);
-            }, 300);
+            setFilteredProducts(filtered.slice(0, itemsToShow));
         }
     }, [category, products]);
 
@@ -60,9 +44,7 @@ function Products({ products, setProducts, category, searchValue, setCategory })
 
     return (
         <section className="products_content">
-            {isLoading ? (
-                <div className='loader'/>// Aquí puedes usar un spinner o un componente de carga
-            ) : filteredProducts.length > 0 ? (
+            {isLoading ? <div><div className='loader'></div></div> : filteredProducts.length > 0 ? (
                 filteredProducts.map((product) => (
                     <Link to={`/product/${product[0]}`} key={product[0]}>
                         <article className="product_article">
